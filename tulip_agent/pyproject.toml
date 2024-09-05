@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "tulip_agent"
+version = "0.1.0"
+description = "autonomous agent with access to a tool library"
+license = "BSD-3-Clause"
+authors = ["Felix Ocker <felix.ocker@honda-ri.de>"]
+readme = "README.md"
+homepage = "https://hri-eu.github.io/tulip_agent/"
+repository = "https://github.com/HRI-EU/tulip_agent"
+keywords = ["autonomous agent", "agent", "tool use", "llm"]
+packages = [
+    { include = "tulip_agent", from="src" },
+    { include = "eval", from="src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10.11"
+chromadb = "^0.4.22"
+openai = "^1.12.0"
+matplotlib = "^3.8.3"
+scipy = "^1.13.0"
+docstring-parser = "^0.16"
+tiktoken = "^0.7.0"
+isort = "^5.13.2"
+pandas = "^2.2.2"
+seaborn = "^0.13.2"
+networkx = "^3.3"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+ruff = "^0.2.1"
+pre-commit = "^3.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+src_paths = ["examples", "src", "tests"]
+skip = [
+    "src/eval/robo_eval/AttentiveSupport",
+    ".venv"
+]
+lines_after_imports = 2
